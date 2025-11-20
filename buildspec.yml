@@ -12,6 +12,14 @@ phases:
     commands:
       - echo Building the React app...
       - npm run build
+      
+  post_build:
+    commands:
+      - echo Packaging artifact...
+      - mkdir -p output
+      - cp -r dist output/build
+      - cp appspec.yml output/appspec.yml
+      - cp -r scripts output/scripts
 
 artifacts:
   files:
